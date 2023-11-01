@@ -94,31 +94,18 @@ print("insert upate")
 print(ins_upd_rec)
 
 
-# Create DataFrames
-
-
 # Set the 'employee_no' column as the index for both DataFrames
 update_df.set_index('employee_no', inplace=True)
 ins_upd_rec.set_index('employee_no', inplace=True)
 
-
-print(update_df)
-print("SKDJHASKJDNBASKJDBNASKJDNKJASD")
-print(ins_upd_rec)
-
 # Update the 'target_df' with the new records and set the flag to 0 for the old records
-update_df.loc[ins_upd_rec.index, 'flag'] = 0
+update_df.update(ins_upd_rec, overwrite=True)
 
-print('sieruognjflkjvndoiklpjoklfj')
-print(update_df)
+scd1_df = update_df
 
-print(';swedoihfjreoijeoijoweijdoi')
-print(ins_upd_rec.index)
+# Reset the index to its original state (if needed)
+# target_df.reset_index(inplace=True)
 
-
-update_df = pd.concat([update_df, ins_upd_rec], sort=False)
-
-print('scd2')
-
-scd2_df = update_df
-print(scd2_df[scd2_df['flag']==1])
+# Display the updated target_df
+print('scd1')
+print(scd1_df)
